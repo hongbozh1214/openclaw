@@ -1,0 +1,9 @@
+# Public example: adapt locally; production paths and UID omitted.
+# User unit: no new system daemon or administrator credential.
+[Unit]
+Description=Start or stop the single conditional NAS browser idle timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/lib/openclaw-maintenance/browser_idle_reaper.py --sync-schedule
+TimeoutStartSec=30

@@ -1,0 +1,17 @@
+{
+  "services": {
+    "gateway": {
+      "image": "${OPENCLAW_IMAGE}",
+      "environment": {
+        "OPENCLAW_GATEWAY_TOKEN": "${OPENCLAW_GATEWAY_TOKEN}"
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "${OPENCLAW_STATE_DIR}",
+          "target": "/home/node/.openclaw"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# Never track production credentials or personal state here.
+.env
+.env.*
+!.env.example
+openclaw.json
+manifest.json
+activity.json
+scheduler-state.json
+schedule-request.json
+state.db*
+*.sqlite*
+*.db
+profiles/
+user-data/
+auth/
+credentials/
+sessions/
+memory/
+docs/
+processed/
+backups/
+*.tar
+*.tar.gz
+__pycache__/

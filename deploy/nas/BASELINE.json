@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "upstreamSourceBase": "eb377ac59e6c9fd6c7705028034812becf00271b",
+  "upstreamTag": "v2026.9.6",
+  "imageTag": "openclaw:local-2026.9.6-gh",
+  "imageId": "sha256:8c9896f8b7c9ac05d6d0f7ffbc7f45e3a9e4ca65d155fcb1d992f388d4413f4e",
+  "lastVerifiedDate": "2026-10-05",
+  "exportPreparedDate": "2026-10-07",
+  "liveNasVerifiedAtExport": true,
+  "artifactStatus": "current-live-code-with-sanitized-configuration-templates",
+  "upstreamSourceCommitProvenToProduceImage": false,
+  "runtime": [
+    {
+      "module": "workspace-mounts-COSMZIQN.mjs",
+      "sha256": "b744c1101b65281767c93cb899333b0091a12ee39b8aca929544e99c217c570d",
+      "stock_sha256": "c7e97c1cd9f81ed3f9a43797fa29ee8fa82db8f49f96ff7fee8255ed2daec2a7",
+      "target": "/app/dist/workspace-mounts-COSMZIQN.mjs"
+    },
+    {
+      "module": "tool-policy-diagnostic-Brr8jNdq.mjs",
+      "sha256": "265c0e6004f1da1a5bde708cda68a99a36fdc45ebac6beb7dad8d935f15b8404",
+      "stock_sha256": "f15a461c916f09a2b29d1d3e469b27c55408cc8f67c4c4ce6ac3141b31fc25a8",
+      "target": "/app/dist/tool-policy-diagnostic-Brr8jNdq.mjs"
+    },
+    {
+      "module": "context-CLNt4NCE.mjs",
+      "sha256": "05cec3cfd9ace7c9ea3a24f7dec606975a211ef7420b15d46bd82710019897bb",
+      "stock_sha256": "d369811d033b814e3298e069cfda75d69511947eb1db630cf115a285b7ccf68a",
+      "target": "/app/dist/context-CLNt4NCE.mjs"
+    },
+    {
+      "module": "core-coding-tools-DiXs0QQ9.mjs",
+      "sha256": "e7c5de77535f29e213835538657ad5387345c98c020208616cdfff44b5f8e255",
+      "stock_sha256": "8654a6b9f99bd2e1bf57300b17b372e0f4320aa3e93facb00c82873642318975",
+      "target": "/app/dist/core-coding-tools-DiXs0QQ9.mjs"
+    },
+    {
+      "module": "openclaw-tools-thu-J91q.mjs",
+      "sha256": "4a050161ff19514ee76f8774ce85980f689b75336e1da1808d879c49195725f3",
+      "stock_sha256": "313924b5de456a7eb532e4e1921af14092f15b63aa7cfa63b4bbf9f03ef8eb5a",
+      "target": "/app/dist/openclaw-tools-thu-J91q.mjs"
+    },
+    {
+      "module": "plugin-service-BMAayH2N.mjs",
+      "sha256": "73c9d03f92df59ac72834798409f76265d81df50a287e8b1e71caeafbddb5ed5",
+      "stock_sha256": "c137f0cf83f9d0822ab012f6f6e3964117011991d181689cf860367d2294cdd5",
+      "target": "/app/dist/plugin-service-BMAayH2N.mjs"
+    }
+  ],
+  "modelCalls": 0,
+  "browserCalls": 0,
+  "privateDataIncluded": false,
+  "omittedOwnerSpecificHelper": "setup-agent.mjs",
+  "systemdTemplatesContainNoActualNasUsername": true,
+  "liveExportVerifiedAtUTC": "2026-10-07T17:40:08.499655+00:00",
+  "composeSha256": "848cd2a5ab381e12d0297be3e2063ec00a0d42c219a99b24e064848d880d7cc4",
+  "currentConfigSha256": "a5fe7b0ac273d63cc0c42b50998308ee44c605fe7c35be5f6d6b4a0622300528",
+  "maintenanceChecks": 64,
+  "existingMaintenanceWarnings": [
+    "openclaw.json: changed since reviewed baseline; review before upgrade"
+  ],
+  "productionManifestNotRebaselined": true,
+  "pendingPublicationApproval": [
+    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/tool-policy-diagnostic-Brr8jNdq.mjs",
+    "deploy/nas/upgrade-kit/recipes.json",
+    "deploy/nas/compose/openclaw.policy.template.json",
+    "deploy/nas/upgrade-kit/manifest.template.json",
+    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/RELEASE.template.json"
+  ],
+  "publishedRuntimeModules": 5,
+  "exportHasFullRuntimeSet": false,
+  "currentConfigDriftPaths": [
+    "gateway.trustedProxies"
+  ]
+}

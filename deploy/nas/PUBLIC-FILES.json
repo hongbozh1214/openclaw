@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "liveNasVerifiedAtExport": true,
+  "privateRuntimeDataExported": false,
+  "ownerSpecificSetupHelperExcluded": true,
+  "realComposeAndSystemdTopologyExcluded": true,
+  "pendingPublicationApproval": [
+    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/tool-policy-diagnostic-Brr8jNdq.mjs",
+    "deploy/nas/upgrade-kit/recipes.json",
+    "deploy/nas/compose/openclaw.policy.template.json",
+    "deploy/nas/upgrade-kit/manifest.template.json",
+    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/RELEASE.template.json"
+  ],
+  "files": [
+    {
+      "path": "deploy/nas/.env.example",
+      "sha256": "a0db0adaa80a9fe157b0337a5ec671eee10eeaa0e9fffd78916c6f0255788018",
+      "bytes": 152
+    },
+    {
+      "path": "deploy/nas/.gitignore",
+      "sha256": "d43e72a39476cdcfd02c8a681e9dfd76a541bcc780b20c8fa69189b9508216ee",
+      "bytes": 309
+    },
+    {
+      "path": "deploy/nas/BASELINE.json",
+      "sha256": "f860d8f2ace7b5ee47d92786a7c89cea496b0783ce6d0b8885bdab3e8b42235d",
+      "bytes": 3369
+    },
+    {
+      "path": "deploy/nas/README.md",
+      "sha256": "b17bb378c2659b822cb84ba2083f3d00176755a57c1d0f774b5b691aaac4a1a1",
+      "bytes": 4972
+    },
+    {
+      "path": "deploy/nas/compose/.env.example",
+      "sha256": "7491ae750bca0d0ad04dbb8ebde2f94617d6080a8b5deee81aff38764db4e7dd",
+      "bytes": 199
+    },
+    {
+      "path": "deploy/nas/compose/docker-compose.template.json",
+      "sha256": "6df28cfa5f85506f7ea10dd0fd264d93238ac747f12bd1d3a03a00588911b1d0",
+      "bytes": 338
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/agent-config-and-skill-sources/native_skill_status.mjs",
+      "sha256": "b5f79cbf0d5e755fd1fbbc0dd0c7ab11ab27e490e17b606f33400d1efc63a840",
+      "bytes": 620
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/agent-config-and-skill-sources/skill_sources.py",
+      "sha256": "23b548ef7273995cbfe0253024b3b91a7a980046d5a63b067f797ba4962891d6",
+      "bytes": 11554
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/agent-workshop-access/own_workshop.mjs",
+      "sha256": "49a94fdb950b3af81754b1afdc488ce2ff022ed25dc8990d7297bfddcf63f1fa",
+      "bytes": 9993
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/browser-idle-reaper/browser_idle_reaper.py",
+      "sha256": "751e1d6d783252686e86768cdced8a1af7a9601b272301b9201a5811c33a954d",
+      "bytes": 13153
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/browser-idle-reaper/browser_runtime_activity.mjs",
+      "sha256": "4d337600a2902d862d7aed8e9a4e3537badd33cead3093ba494ee448ce91c0da",
+      "bytes": 3254
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/browser-idle-reaper/event_state.py",
+      "sha256": "df47aca9ea0c8002a0837451b5c7b885e62a4257f07e0a8b63527878fc49421b",
+      "bytes": 3380
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/browser-idle-reaper/lazy_browser.mjs",
+      "sha256": "8a3b206a2831338e119ded6fc99a55d3f91bbb1f068142b1624993ab5945dbcc",
+      "bytes": 2147
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/runtime-and-recovery-20261005/release-departed-owner.mjs",
+      "sha256": "21dc5cac36b660331290baa9878f06131fdcb466db2a1856e21b557441347f53",
+      "bytes": 1586
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/maintenance/workspace-layout-and-skills/workspace_policy.mjs",
+      "sha256": "cb56bc0886ca47344d16d0343ce56c3aa5e2d4a4577ad71e8909474542b85893",
+      "bytes": 1842
+    },
+    {
+      "path": "deploy/nas/operator-files/data/state/skills/shared-toolkit/scripts/agent-mount-policy.mjs",
+      "sha256": "2fcc34e4faee41400234881fa493df0d60c2ba87e0eb13f6a22525bd22a0e00a",
+      "bytes": 7091
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/context-CLNt4NCE.mjs",
+      "sha256": "05cec3cfd9ace7c9ea3a24f7dec606975a211ef7420b15d46bd82710019897bb",
+      "bytes": 39185
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/core-coding-tools-DiXs0QQ9.mjs",
+      "sha256": "e7c5de77535f29e213835538657ad5387345c98c020208616cdfff44b5f8e255",
+      "bytes": 52078
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/openclaw-tools-thu-J91q.mjs",
+      "sha256": "4a050161ff19514ee76f8774ce85980f689b75336e1da1808d879c49195725f3",
+      "bytes": 795815
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/plugin-service-BMAayH2N.mjs",
+      "sha256": "73c9d03f92df59ac72834798409f76265d81df50a287e8b1e71caeafbddb5ed5",
+      "bytes": 118970
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/workspace-mounts-COSMZIQN.mjs",
+      "sha256": "b744c1101b65281767c93cb899333b0091a12ee39b8aca929544e99c217c570d",
+      "bytes": 8015
+    },
+    {
+      "path": "deploy/nas/systemd-user/openclaw-browser-idle-boot.service",
+      "sha256": "f1922b61be675b577a3fa888adc294f357ffb328eedf4eaea6c7e6967056e615",
+      "bytes": 526
+    },
+    {
+      "path": "deploy/nas/systemd-user/openclaw-browser-idle-hourly.timer",
+      "sha256": "c560de43539e90291ac03066cb32ea044d632de167966c7f1281d84091ea9e13",
+      "bytes": 287
+    },
+    {
+      "path": "deploy/nas/systemd-user/openclaw-browser-idle-schedule.path",
+      "sha256": "f9e93d2cd84a376ab4191487f43a79de168545b8c57bb5b0cd0b3aee4830b4f0",
+      "bytes": 371
+    },
+    {
+      "path": "deploy/nas/systemd-user/openclaw-browser-idle-schedule.service",
+      "sha256": "5fd7470081d0c564f2ba6f4bc14ccf84ff6ea1df0449897c69f5c5ec35df699f",
+      "bytes": 353
+    },
+    {
+      "path": "deploy/nas/systemd-user/openclaw-browser-idle-tick.service",
+      "sha256": "ea2e660465f8056b7851ab7dc337f2efff1f14db3139e85c2252ea7ffd4edf70",
+      "bytes": 322
+    },
+    {
+      "path": "deploy/nas/upgrade-kit/upgrade_kit.py",
+      "sha256": "28b1be792ca2d4fc9d206a57dbf17d9678af4a0eded2ff9ef7c14a287f2388c1",
+      "bytes": 12140
+    }
+  ]
+}

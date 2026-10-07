@@ -1,0 +1,11 @@
+# Public example: adapt locally; production paths and UID omitted.
+# Candidate only. Uses the NAS's existing systemd manager, no watcher process.
+[Unit]
+Description=Apply OpenClaw browser detector arm/disarm events
+
+[Path]
+PathChanged=%h/.config/systemd/user/browser-idle-reaper-request.json
+Unit=openclaw-browser-idle-schedule.service
+
+[Install]
+WantedBy=default.target

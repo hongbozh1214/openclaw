@@ -1,0 +1,10 @@
+# Public example: adapt locally; production paths and UID omitted.
+[Unit]
+Description=OpenClaw browser idle hourly detector, active only while browsers run
+CollectMode=inactive-or-failed
+
+[Timer]
+OnActiveSec=60m
+OnUnitActiveSec=60m
+AccuracySec=1s
+Unit=openclaw-browser-idle-tick.service

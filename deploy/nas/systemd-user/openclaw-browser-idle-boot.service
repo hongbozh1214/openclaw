@@ -1,0 +1,13 @@
+# Public example: adapt locally; production paths and UID omitted.
+[Unit]
+Description=Reconcile OpenClaw browser idle state once when the existing user manager starts
+ConditionPathExists=%h/.local/lib/openclaw-maintenance/detector-armed.flag
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/lib/openclaw-maintenance/browser_idle_reaper.py --reconcile-runtime
+ExecStart=/usr/bin/python3 %h/.local/lib/openclaw-maintenance/browser_idle_reaper.py --sync-schedule
+TimeoutStartSec=50
+
+[Install]
+WantedBy=default.target

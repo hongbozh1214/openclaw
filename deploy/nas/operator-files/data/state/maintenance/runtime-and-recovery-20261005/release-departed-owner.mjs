@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {u as withStartup} from '/app/dist/openclaw-state-db-BFK9cMiV.mjs';
+import {o as withTransaction} from '/app/dist/sqlite-transaction-DKSXLQhb.mjs';
+import {n as readLease,a as releaseLease} from '/app/dist/openclaw-state-lease-store-CCKioOUP.mjs';
+const key={scope:'gateway-owner',key:'global'};
+const all=execFileSync('docker',['ps','-aq'],{encoding:'utf8'}).trim().split(/\s+/).filter(Boolean);
+const cs=JSON.parse(execFileSync('docker',['inspect',...all],{encoding:'utf8'}));
+assert(cs.filter(c=>c.Name==='/openclaw-new-openclaw-gateway-1').every(c=>!c.State.Running));
+const result=withStartup(db=>withTransaction(db,()=>{
+ const current=readLease(db,key);if(!current)return {removed:false,alreadyAbsent:true};
+ const payload=JSON.parse(current.payloadJson);assert(payload.owner&&/^[a-f0-9]{12}$/.test(payload.owner.host));
+ const owners=cs.filter(c=>c.Config.Hostname===payload.owner.host||c.Id.startsWith(payload.owner.host));
+ assert(owners.every(c=>c.Name==='/openclaw-new-openclaw-gateway-1'&&!c.State.Running),'Recorded owner container may still be live; no release');
+ fs.writeFileSync('/home/node/.openclaw/maintenance/runtime-and-recovery-20261005/DEPARTED-OWNER.json',JSON.stringify(current,null,2)+'\n',{mode:0o600});
+ releaseLease(db,{...key,owner:current.owner});assert.equal(readLease(db,key),undefined);
+ return {removed:true,exactOwnerOnly:true,ownerContainerAbsentOrStopped:true};
+}),{});
+console.log(JSON.stringify(result));process.exit(0);

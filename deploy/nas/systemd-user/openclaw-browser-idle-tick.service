@@ -1,0 +1,9 @@
+# Public example: adapt locally; production paths and UID omitted.
+[Unit]
+Description=One bounded browser idle check, without any model invocation
+CollectMode=inactive-or-failed
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/lib/openclaw-maintenance/browser_idle_reaper.py --tick --apply
+TimeoutStartSec=180
