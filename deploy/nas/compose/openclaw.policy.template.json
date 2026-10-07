@@ -1,0 +1,219 @@
+{
+  "agents": {
+    "defaults": {
+      "sandbox": {
+        "mode": "all",
+        "backend": "docker",
+        "scope": "agent",
+        "workspaceAccess": "rw",
+        "sessionToolsVisibility": "all",
+        "docker": {
+          "image": "openclaw:local-2026.9.6-gh",
+          "readOnlyRoot": true,
+          "tmpfs": [
+            "/tmp",
+            "/var/tmp",
+            "/run",
+            "/tmp/openclaw-home:rw,uid=1000,gid=1000,mode=700"
+          ],
+          "network": "none",
+          "user": "1000:1000",
+          "capDrop": [
+            "ALL"
+          ],
+          "pidsLimit": 256,
+          "memory": "1g",
+          "cpus": 1,
+          "env": {
+            "HOME": "/tmp/openclaw-home",
+            "LANG": "C.UTF-8",
+            "TZ": "Europe/Helsinki"
+          },
+          "binds": [
+            "REPLACE_WITH_NAS_ROOT/data/shared/reference:/shared/reference:ro",
+            "REPLACE_WITH_NAS_ROOT/data/shared/handoff:/shared/handoff:rw",
+            "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit:/shared/skills:rw",
+            "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/scripts:/shared/skills/scripts:ro",
+            "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/.git:/shared/skills/.git:ro",
+            "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/SHARED_TOOLKIT_MAINTENANCE.md:/shared/skills/SHARED_TOOLKIT_MAINTENANCE.md:ro"
+          ],
+          "dangerouslyAllowExternalBindSources": true,
+          "dangerouslyAllowReservedContainerTargets": true
+        },
+        "browser": {
+          "enabled": true,
+          "image": "openclaw-sandbox-browser:local-2026.9.6-gh",
+          "headless": true,
+          "noVncEnabled": false,
+          "allowHostControl": false,
+          "autoStartTimeoutMs": 30000,
+          "binds": []
+        }
+      },
+      "model": {
+        "primary": "openai/gpt-6-sol",
+        "fallbacks": []
+      }
+    },
+    "entries": {
+      "main": {
+        "workspace": "/home/node/.openclaw/workspace",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "docker": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/workspace:/home/node/.openclaw/workspace:rw",
+              "REPLACE_WITH_NAS_ROOT/data/workspace/docs:/home/node/.openclaw/workspace/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/main/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/main/agent/workshop-skills:/home/node/.openclaw/agents/main/agent/workshop-skills:rw"
+            ],
+            "memory": "2g",
+            "cpus": 2
+          },
+          "browser": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/state/browser/openclaw/user-data:/tmp/openclaw-home/.chrome:rw",
+              "REPLACE_WITH_NAS_ROOT/data/workspace:/home/node/.openclaw/workspace:rw",
+              "REPLACE_WITH_NAS_ROOT/data/workspace/docs:/home/node/.openclaw/workspace/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/main/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/main/agent/workshop-skills:/home/node/.openclaw/agents/main/agent/workshop-skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/shared/reference:/shared/reference:ro",
+              "REPLACE_WITH_NAS_ROOT/data/shared/handoff:/shared/handoff:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit:/shared/skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/scripts:/shared/skills/scripts:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/.git:/shared/skills/.git:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/SHARED_TOOLKIT_MAINTENANCE.md:/shared/skills/SHARED_TOOLKIT_MAINTENANCE.md:ro"
+            ]
+          }
+        },
+        "model": {
+          "primary": "openai/gpt-6-sol",
+          "fallbacks": []
+        },
+        "tools": {
+          "exec": {
+            "host": "sandbox"
+          },
+          "fs": {
+            "workspaceOnly": true
+          },
+          "elevated": {
+            "enabled": false
+          }
+        }
+      },
+      "worker-a": {
+        "workspace": "/home/node/.openclaw/workspace-worker-a",
+        "agentDir": "/home/node/.openclaw/agents/worker-a/agent",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "docker": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-a:/home/node/.openclaw/workspace-worker-a:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-a/docs:/home/node/.openclaw/workspace-worker-a/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-a/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-a/agent/workshop-skills:/home/node/.openclaw/agents/worker-a/agent/workshop-skills:rw"
+            ],
+            "network": "openclaw-isolated-worker-a"
+          },
+          "browser": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/state/browser/worker-a/user-data:/tmp/openclaw-home/.chrome:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-a:/home/node/.openclaw/workspace-worker-a:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-a/docs:/home/node/.openclaw/workspace-worker-a/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-a/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-a/agent/workshop-skills:/home/node/.openclaw/agents/worker-a/agent/workshop-skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/shared/reference:/shared/reference:ro",
+              "REPLACE_WITH_NAS_ROOT/data/shared/handoff:/shared/handoff:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit:/shared/skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/scripts:/shared/skills/scripts:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/.git:/shared/skills/.git:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/SHARED_TOOLKIT_MAINTENANCE.md:/shared/skills/SHARED_TOOLKIT_MAINTENANCE.md:ro"
+            ]
+          }
+        },
+        "tools": {
+          "exec": {
+            "host": "sandbox"
+          },
+          "fs": {
+            "workspaceOnly": true
+          },
+          "elevated": {
+            "enabled": false
+          }
+        }
+      },
+      "worker-b": {
+        "workspace": "/home/node/.openclaw/workspace-worker-b",
+        "agentDir": "/home/node/.openclaw/agents/worker-b/agent",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "docker": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-b:/home/node/.openclaw/workspace-worker-b:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-b/docs:/home/node/.openclaw/workspace-worker-b/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-b/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-b/agent/workshop-skills:/home/node/.openclaw/agents/worker-b/agent/workshop-skills:rw"
+            ],
+            "network": "openclaw-isolated-worker-b"
+          },
+          "browser": {
+            "binds": [
+              "REPLACE_WITH_NAS_ROOT/data/state/browser/worker-b/user-data:/tmp/openclaw-home/.chrome:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-b:/home/node/.openclaw/workspace-worker-b:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/workspace-worker-b/docs:/home/node/.openclaw/workspace-worker-b/docs:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-b/agent/workshop-skills:/workspace/workshop:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/agents/worker-b/agent/workshop-skills:/home/node/.openclaw/agents/worker-b/agent/workshop-skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/shared/reference:/shared/reference:ro",
+              "REPLACE_WITH_NAS_ROOT/data/shared/handoff:/shared/handoff:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit:/shared/skills:rw",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/scripts:/shared/skills/scripts:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/.git:/shared/skills/.git:ro",
+              "REPLACE_WITH_NAS_ROOT/data/state/skills/shared-toolkit/SHARED_TOOLKIT_MAINTENANCE.md:/shared/skills/SHARED_TOOLKIT_MAINTENANCE.md:ro"
+            ]
+          }
+        },
+        "tools": {
+          "exec": {
+            "host": "sandbox"
+          },
+          "fs": {
+            "workspaceOnly": true
+          },
+          "elevated": {
+            "enabled": false
+          }
+        }
+      }
+    }
+  },
+  "tools": {
+    "exec": {
+      "host": "sandbox"
+    },
+    "fs": {
+      "workspaceOnly": true
+    },
+    "elevated": {
+      "enabled": false
+    },
+    "sessions": {
+      "visibility": "agent"
+    },
+    "agentToAgent": {
+      "enabled": false
+    },
+    "profile": "coding"
+  },
+  "publicationNotes": [
+    "Selected permission/model fields only, not a deployable full configuration.",
+    "Providers, tokens, channels, personal schedules, task contents and private skills are omitted."
+  ]
+}

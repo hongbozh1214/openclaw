@@ -60,16 +60,11 @@
     "openclaw.json: changed since reviewed baseline; review before upgrade"
   ],
   "productionManifestNotRebaselined": true,
-  "pendingPublicationApproval": [
-    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/tool-policy-diagnostic-Brr8jNdq.mjs",
-    "deploy/nas/upgrade-kit/recipes.json",
-    "deploy/nas/compose/openclaw.policy.template.json",
-    "deploy/nas/upgrade-kit/manifest.template.json",
-    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/RELEASE.template.json"
-  ],
-  "publishedRuntimeModules": 5,
-  "exportHasFullRuntimeSet": false,
+  "pendingPublicationApproval": [],
+  "publishedRuntimeModules": 6,
+  "exportHasFullRuntimeSet": true,
   "currentConfigDriftPaths": [
     "gateway.trustedProxies"
-  ]
+  ],
+  "explicitPublicAuthorizationDate": "2026-10-07"
 }

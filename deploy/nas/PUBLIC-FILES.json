@@ -4,13 +4,8 @@
   "privateRuntimeDataExported": false,
   "ownerSpecificSetupHelperExcluded": true,
   "realComposeAndSystemdTopologyExcluded": true,
-  "pendingPublicationApproval": [
-    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/tool-policy-diagnostic-Brr8jNdq.mjs",
-    "deploy/nas/upgrade-kit/recipes.json",
-    "deploy/nas/compose/openclaw.policy.template.json",
-    "deploy/nas/upgrade-kit/manifest.template.json",
-    "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/RELEASE.template.json"
-  ],
+  "pendingPublicationApproval": [],
+  "explicitPublicAuthorizationDate": "2026-10-07",
   "files": [
     {
       "path": "deploy/nas/.env.example",
@@ -24,13 +19,13 @@
     },
     {
       "path": "deploy/nas/BASELINE.json",
-      "sha256": "f860d8f2ace7b5ee47d92786a7c89cea496b0783ce6d0b8885bdab3e8b42235d",
-      "bytes": 3369
+      "sha256": "41328de1eebd44967586b566199e16f8ffbe993d0f09c621d1fd7094edb37e27",
+      "bytes": 3089
     },
     {
       "path": "deploy/nas/README.md",
-      "sha256": "b17bb378c2659b822cb84ba2083f3d00176755a57c1d0f774b5b691aaac4a1a1",
-      "bytes": 4972
+      "sha256": "4a331c973f644134db65691cf74240e7f7dcfd3e41e90e7098041d880febbc49",
+      "bytes": 5144
     },
     {
       "path": "deploy/nas/compose/.env.example",
@@ -41,6 +36,11 @@
       "path": "deploy/nas/compose/docker-compose.template.json",
       "sha256": "6df28cfa5f85506f7ea10dd0fd264d93238ac747f12bd1d3a03a00588911b1d0",
       "bytes": 338
+    },
+    {
+      "path": "deploy/nas/compose/openclaw.policy.template.json",
+      "sha256": "e9d82146241be567b5193a74f552a6b3186bb395e5e4a8c59c262cfd54accbd8",
+      "bytes": 9556
     },
     {
       "path": "deploy/nas/operator-files/data/state/maintenance/agent-config-and-skill-sources/native_skill_status.mjs",
@@ -93,6 +93,11 @@
       "bytes": 7091
     },
     {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/RELEASE.template.json",
+      "sha256": "f744b19d2d7096ddf763c1a45dc8af56fa1580a92b5fb7b82485d8cf2dd9df91",
+      "bytes": 4693
+    },
+    {
       "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/context-CLNt4NCE.mjs",
       "sha256": "05cec3cfd9ace7c9ea3a24f7dec606975a211ef7420b15d46bd82710019897bb",
       "bytes": 39185
@@ -111,6 +116,11 @@
       "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/plugin-service-BMAayH2N.mjs",
       "sha256": "73c9d03f92df59ac72834798409f76265d81df50a287e8b1e71caeafbddb5ed5",
       "bytes": 118970
+    },
+    {
+      "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/tool-policy-diagnostic-Brr8jNdq.mjs",
+      "sha256": "265c0e6004f1da1a5bde708cda68a99a36fdc45ebac6beb7dad8d935f15b8404",
+      "bytes": 8991
     },
     {
       "path": "deploy/nas/runtime-overlays/2026.9.6-gh/20261005-01/workspace-mounts-COSMZIQN.mjs",
@@ -141,6 +151,16 @@
       "path": "deploy/nas/systemd-user/openclaw-browser-idle-tick.service",
       "sha256": "ea2e660465f8056b7851ab7dc337f2efff1f14db3139e85c2252ea7ffd4edf70",
       "bytes": 322
+    },
+    {
+      "path": "deploy/nas/upgrade-kit/manifest.template.json",
+      "sha256": "3747e50bc4584862fa05d040aa575373fbcc4f875096a1d48452d1af9b419c87",
+      "bytes": 15081
+    },
+    {
+      "path": "deploy/nas/upgrade-kit/recipes.json",
+      "sha256": "012636e6dcbd1c1b72dd8e208fff75c66565e3b150ca6ccc0e4e45d4bd641164",
+      "bytes": 21668
     },
     {
       "path": "deploy/nas/upgrade-kit/upgrade_kit.py",

@@ -1,4 +1,4 @@
-# NAS 定制 9.6：最后验收基线
+# NAS 定制 9.6：代码与维护资料归档
 
 这套资料于 **2026-10-07 从当前 NAS 定制 2026.9.6 只读导出并核对**。现场 Gateway 健康，六个挂载补丁及当前依赖与审核清单一致，64 项维护检查通过。原功能验收记录来自 2026-10-05；本次只复核当前代码和部署元数据，没有重跑原验收。当前 openclaw.json 摘要不同于旧审核基线，已有检查提示升级前复核；本次保留该提示，没有修改现场基线。
 
@@ -10,7 +10,8 @@
 - `operator-files/`：公开范围内的浏览器回收、工作区权限、所属工坊、挂载规划和技能来源管理代码；按正式 NAS 根目录的相对路径保留。
 - `systemd-user/`：基于原生回收单位整理的通用示例，使用 %h/%t 和示例目录；原实际 NAS 路径、UID 与用户名不公开。修复前后逻辑来自已验收记录，但这些公开模板不是原部署字节，须适配本地代码路径与环境。
 - `upgrade-kit/upgrade_kit.py` 与 `recipes.json`：六个模块的统一生成和只读检查入口。生成规则校验原镜像源码和锚点唯一性；不自动激活、重启或回退。
-- `manifest.template.json`：已将个人 agent 标识改为 worker-a/worker-b 的配置策略模板；不是现场原配置，不可直接当作已审核生产清单。
+- `upgrade-kit/manifest.template.json` 与 `runtime-overlays/.../RELEASE.template.json`：已将现场根目录及容器标识替换为占位符的维护与发布记录模板；排除个人专用 setup helper，不是完整现场依赖清单。
+- `compose/openclaw.policy.template.json`：权限、模型选择与工作区策略模板，个人 agent 标识替换为 worker-a/worker-b；不是现场原配置。
 - `BASELINE.json`、`PUBLIC-FILES.json`：版本、模块摘要、有限发布范围；不含私人会话正文、原配置、凭据或备份内容。
 
 这是定制代码和维护资料，不是完整系统备份。没有上传 `.env`、实际 `openclaw.json`、私人技能内容、求职资料、记忆、TASKS/ledger、录像、浏览器 profile、SQLite/会话数据库、镜像导出或完整恢复记录。个人专用 setup-agent.mjs 因嵌入个人工作流预设及生产配置操作，保留在 NAS，不向公开仓库上传。`compose/docker-compose.template.json` 是公开用的最小通用占位示例，不是当前生产 Compose 的副本：真实挂载路径、Docker socket、认证挂载、capabilities、安全选项、网络与启动参数均不公开。实际部署仍以 NAS 现有 Compose 为准。`openclaw.policy.template.json` 只包含权限、模型选择和工作区模板，实际根路径用占位符、个人标识替换为 worker-a/worker-b。不包含 providers 或 auth 等真实配置，不能直接作为完整生产部署启动。
@@ -29,6 +30,6 @@
 
 本资料未附自动安装脚本。将 operator-files/systemd 复制到生产属于实际部署，必须先处理本地标识、路径、权限和维护窗口，不能直接执行归档的旧部署脚本。
 
-## 待公开源码及配置授权
+## 公开授权与完整性
 
-权限诊断模块 tool-policy-diagnostic-Brr8jNdq.mjs、recipes.json、openclaw.policy.template.json、manifest.template.json 和 RELEASE.template.json 暂未随首批提交公开。自动审批要求明确授权公开内部权限边界和定制逻辑；这五个文件从当前发布清单排除。六个模块的哈希记录来自现场核对，但当前公开源码集合只有五个运行模块，生成规则及完整维护清单暂不可使用。其余公开代码及通用占位示例不受此限制。个人专用 setup-agent.mjs 保留 NAS、排除本次公开范围。
+用户于 2026-10-07 明确授权公开五份补充资料：权限诊断模块、recipes.json、openclaw.policy.template.json、manifest.template.json 和 RELEASE.template.json。六个运行模块、统一生成规则及脱敏维护记录模板现已纳入发布范围。生成规则仍要求匹配原 stock 字节；维护模板须还原本地标识并补齐现场依赖后单独审核，不代表可直接部署或完整回退。个人专用 setup-agent.mjs 继续保留 NAS、排除本次公开范围。
