@@ -1,0 +1,171 @@
+{
+  "documentType": "redacted-reference-snapshot",
+  "openclawVersion": "2026.10.4",
+  "recordedDate": "2026-10-22",
+  "deployable": false,
+  "source": "Read-only projection of the active NAS OpenClaw config plus the accepted 2026-10-18 cutover record.",
+  "image": {
+    "reference": "openclaw:native-2026.10.4-gh-candidate",
+    "imageId": "sha256:c33ff7901f5d03f23d51352594d8ebea8aec1b35b971aeace4f94769df4fdfad",
+    "officialBaseDigest": "sha256:7f10d5cc975a90b65192eaa099454fe33ce8ce2390806c61c65cd868e9ef730d",
+    "buildModel": "fixed official base plus the existing single tools layer"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai/gpt-6.1-sol",
+        "fallbacks": []
+      },
+      "sandbox": {
+        "mode": "all",
+        "backend": "docker",
+        "scope": "agent",
+        "workspaceAccess": "rw",
+        "sessionToolsVisibility": "all",
+        "docker": {
+          "image": "sha256:c33ff7901f5d03f23d51352594d8ebea8aec1b35b971aeace4f94769df4fdfad",
+          "readOnlyRoot": true,
+          "network": "none",
+          "user": "1000:1000",
+          "capDrop": ["ALL"],
+          "pidsLimit": 256,
+          "memory": "1g",
+          "cpus": 1,
+          "tmpfs": [
+            "/tmp",
+            "/var/tmp",
+            "/run",
+            "/tmp/openclaw-home:rw,uid=1000,gid=1000,mode=700",
+            "/dev/shm:rw,nosuid,nodev,noexec,size=64m"
+          ],
+          "bindPolicy": "NAS-specific source paths omitted; see current deployment locally"
+        }
+      }
+    },
+    "entries": {
+      "main": {
+        "displayName": "hongbo_assistant",
+        "workspace": "<STATE>/workspace",
+        "model": "openai/gpt-6.1-sol",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "network": "none",
+          "memory": "2g",
+          "cpus": 2,
+          "docsReadOnly": true
+        },
+        "execHost": "sandbox",
+        "browserHeadless": false
+      },
+      "jobs-hongbo": {
+        "workspace": "<STATE>/workspace-jobs-hongbo",
+        "model": "inherit",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "network": "agent-specific-isolated-bridge"
+        },
+        "execHost": "sandbox",
+        "browserHeadless": true
+      },
+      "jobs-wife": {
+        "workspace": "<STATE>/workspace-jobs-wife",
+        "model": "inherit",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "network": "agent-specific-isolated-bridge"
+        },
+        "execHost": "sandbox",
+        "browserHeadless": true
+      },
+      "wei_assistant": {
+        "workspace": "<STATE>/workspace-wei_assistant",
+        "model": "inherit",
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "rw",
+          "network": "bridge"
+        },
+        "execHost": "sandbox",
+        "browserHeadless": true,
+        "toolDeny": ["gateway", "plugins", "openclaw"]
+      },
+      "maintenance": {
+        "workspace": "<STATE>/workspace-maintenance",
+        "model": "inherit",
+        "sandbox": {
+          "mode": "off"
+        },
+        "execHost": "auto",
+        "execApproval": "ask",
+        "approvalFallback": "deny"
+      }
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "agentToAgent": {
+      "enabled": true,
+      "allow": ["main", "jobs-hongbo", "jobs-wife", "wei_assistant"]
+    },
+    "sessions": {
+      "visibility": "agent"
+    },
+    "exec": {
+      "host": "sandbox",
+      "notifyOnExit": true
+    },
+    "fs": {
+      "workspaceOnly": true
+    },
+    "elevated": {
+      "enabled": false
+    }
+  },
+  "commands": {
+    "restart": false
+  },
+  "browser": {
+    "enabled": true,
+    "headlessDefault": true,
+    "effectiveHeadlessByAgent": {
+      "main": false,
+      "jobs-hongbo": true,
+      "jobs-wife": true,
+      "wei_assistant": true,
+      "maintenance": true
+    },
+    "profileIdsAndSessionDataOmitted": true
+  },
+  "plugins": {
+    "openclaw-weixin": {
+      "enabled": true,
+      "package": "@tencent-weixin/openclaw-weixin",
+      "version": "2.4.10",
+      "accountRoutingAndCredentialsOmitted": true
+    },
+    "excel": {
+      "enabled": true,
+      "contractsTools": [
+        "excel_list_sheets",
+        "excel_read_sheet",
+        "excel_replace_sheet",
+        "excel_append_rows"
+      ],
+      "knownLocalCompatibility": "xlsx default import with xlsx 0.18.5; reevaluate against future upstream support"
+    }
+  },
+  "excludedFromThisSnapshot": [
+    "production openclaw.json and Compose files",
+    ".env, credentials, tokens, cookies and account identifiers",
+    "channel routes, private tasks, session databases and WAL files",
+    "workspace, memory and browser profile contents",
+    "absolute NAS paths and browser profile identifiers"
+  ]
+}
