@@ -1,0 +1,20 @@
+{
+  "recordedDate": "2026-10-22",
+  "files": [
+    {
+      "path": "deploy/nas/README.md",
+      "sha256": "c5b431c097483f0dcc432e4143a5ccf9ee58a94943019e6f01aa6f70c52a4510",
+      "bytes": 1160
+    },
+    {
+      "path": "deploy/nas/current-2026.10.4/README.md",
+      "sha256": "80443ae4f0a83ab56b80110a21eb1445e0ab5c087a5cb5294e127357bbaadcba",
+      "bytes": 1924
+    },
+    {
+      "path": "deploy/nas/current-2026.10.4/openclaw-config.redacted.json",
+      "sha256": "14a8457d7241da5af4b3976adfff75902d6c21488236bbf5b01613804c8b8a59",
+      "bytes": 4912
+    }
+  ]
+}
